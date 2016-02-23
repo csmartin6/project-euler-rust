@@ -3,3 +3,6 @@ name = "project-euler"
 version = "0.1.0"
 authors = ["Chris Martin <cmartin@palantir.com>"]
 
+[dependencies]
+itertools = "0.4.9"
+

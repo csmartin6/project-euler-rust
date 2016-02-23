@@ -1,5 +1,5 @@
 
-//use test::Bencher;
+use test::Bencher;
 
 fn problem_001() -> i64 {
     let mut s: i64 = 0;
@@ -20,10 +20,10 @@ fn test_problem_001() {
 }
 
 
-// #[bench]
-// fn bench_problem_001(b: &mut Bencher) {
-//         b.iter(|| problem_001());
-// }
+#[bench]
+fn bench_problem_001(b: &mut Bencher) {
+        b.iter(|| problem_001());
+}
 
 
 
