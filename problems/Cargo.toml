@@ -1,11 +1,7 @@
 [package]
-name = "project-euler"
+name = "problems"
 version = "0.1.0"
 authors = ["Chris Martin <cmartin@palantir.com>"]
 
 [dependencies]
-problems = {path = "problems"}
-
-
 itertools = "0.4.9"
-
