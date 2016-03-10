@@ -1,6 +1,7 @@
 use utils;
 use std::collections::HashMap;
 
+
 pub fn problem_001() -> i64 {
     let mut s: i64 = 0;
 
@@ -78,4 +79,11 @@ pub fn problem_005() -> u64 {
 	}
 
 	product
+}
+
+pub fn problem_006() -> u64 {
+    let n = 100;
+    let sum_of_squares: u64 = (1..n+1).map(|x| x*x).fold(0, |sum, x| sum + x);
+    let square_of_sum: u64 = (1..n+1).fold(0, |sum, x| sum + x).pow(2);
+    square_of_sum - sum_of_squares
 }

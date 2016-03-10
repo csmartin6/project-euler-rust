@@ -35,3 +35,10 @@ fn test_problem_005() {
     println!("Answer to Problem 5: {}",ans);
     assert!(ans == 232792560)
 }
+
+#[test]
+fn test_problem_006() {
+    let ans: u64 = problems::problem_006();
+    println!("Answer to Problem 6: {}",ans);
+    assert!(ans == 25164150)
+}

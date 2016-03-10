@@ -25,3 +25,8 @@ fn bench_problem_004(b: &mut Bencher) {
 fn bench_problem_005(b: &mut Bencher) {
         b.iter(|| problems::problem_005());
 }
+
+#[bench]
+fn bench_problem_006(b: &mut Bencher) {
+        b.iter(|| problems::problem_006());
+}
