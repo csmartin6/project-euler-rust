@@ -30,3 +30,13 @@ fn bench_problem_005(b: &mut Bencher) {
 fn bench_problem_006(b: &mut Bencher) {
         b.iter(|| problems::problem_006());
 }
+
+#[bench]
+fn bench_problem_007(b: &mut Bencher) {
+        b.iter(|| problems::problem_007());
+}
+
+#[bench]
+fn bench_problem_007_sieve(b: &mut Bencher) {
+        b.iter(|| problems::problem_007_sieve());
+}
