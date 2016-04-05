@@ -5,7 +5,7 @@ use std::collections::HashMap;
 
 pub fn is_prime(n: usize) -> bool {
     if n == 2 {
-        return true
+        return true;
     }
 
     if n % 2 == 0 {
@@ -27,27 +27,34 @@ pub fn prime_sieve(n: usize) -> Vec<usize> {
     let mut p = 2;
 
     candidate_primes[0] = false;
-    candidate_primes[1] = false;    
+    candidate_primes[1] = false;
 
     while p <= (n as f64).sqrt() as usize {
         if candidate_primes[p] {
-            for i in (p*p .. n).step_by(p) {
+            for i in (p * p..n).step_by(p) {
                 candidate_primes[i] = false;
             }
         }
         p += 1;
     }
 
-    let mut primes: Vec<usize> = vec!();
-    
-    for (p, &isprime) in candidate_primes.iter().enumerate(){
+    let mut primes: Vec<usize> = vec![];
+
+    for (p, &isprime) in candidate_primes.iter().enumerate() {
         if isprime {
             primes.push(p)
         }
     }
     primes
-
 }
+
+pub fn nth_prime(n: usize) -> usize {
+    let max_candidate: usize = 2 * n * (n as f64).ln() as usize;
+    let primes = prime_sieve(max_candidate);
+    primes[n - 1]
+}
+
+
 
 pub fn smallest_prime_factor(n: usize) -> usize {
     if n % 2 == 0 {
@@ -90,12 +97,14 @@ pub fn to_digit_array(num: usize) -> Vec<usize> {
     digits
 }
 
-pub fn counts<T>(list: &[T]) -> HashMap<T,usize> where T: Eq + Hash + Copy{
-    let mut counter: HashMap<T,usize> = HashMap::new();
+pub fn counts<T>(list: &[T]) -> HashMap<T, usize>
+    where T: Eq + Hash + Copy
+{
+    let mut counter: HashMap<T, usize> = HashMap::new();
 
     for &el in list.iter() {
         let new_count = counter.get(&el).unwrap_or(&0) + 1;
-        counter.insert(el.to_owned(),new_count);
+        counter.insert(el.to_owned(), new_count);
     }
     counter
 }
@@ -103,12 +112,10 @@ pub fn counts<T>(list: &[T]) -> HashMap<T,usize> where T: Eq + Hash + Copy{
 pub fn is_palindrome(num: usize) -> bool {
     let digits = to_digit_array(num);
     let n = digits.len();
-    for i in 0 .. n/2 {
-        if digits[i] != digits[n-i-1]{
+    for i in 0..n / 2 {
+        if digits[i] != digits[n - i - 1] {
             return false;
         }
     }
     true
 }
-
-
