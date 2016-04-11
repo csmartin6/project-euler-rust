@@ -5,6 +5,8 @@ extern crate test;
 extern crate itertools;
 
 extern crate problems;
+extern crate utils;
+
 
 use std::env;
 use std::process;
@@ -38,7 +40,7 @@ fn main(){
             "problem_006" => run_problem(problems::problems::problem_006, arg),
             "problem_007" => run_problem(problems::problems::problem_007, arg),
             "problem_008" => run_problem(problems::problems::problem_008, arg),
-            "problem_009" => run_problem(problems::problems::problem_009, arg),
+            "problem_009" => run_problem(problems::problem_009::problem_009, arg),
     		_ => println!("Haven't done {} yet",arg)
 
     	}
