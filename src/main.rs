@@ -32,15 +32,16 @@ fn main(){
 
     for arg in argv.iter(){
     	match &arg[..] {
-    		"problem_001" => run_problem(problems::problems::problem_001, arg),
-    		"problem_002" => run_problem(problems::problems::problem_002, arg),
-    		"problem_003" => run_problem(problems::problems::problem_003, arg),
-    		"problem_004" => run_problem(problems::problems::problem_004, arg),
-    		"problem_005" => run_problem(problems::problems::problem_005, arg),
-            "problem_006" => run_problem(problems::problems::problem_006, arg),
-            "problem_007" => run_problem(problems::problems::problem_007, arg),
-            "problem_008" => run_problem(problems::problems::problem_008, arg),
+    		"problem_001" => run_problem(problems::problem_001::problem_001, arg),
+    		"problem_002" => run_problem(problems::problem_002::problem_002, arg),
+    		"problem_003" => run_problem(problems::problem_003::problem_003, arg),
+    		"problem_004" => run_problem(problems::problem_004::problem_004, arg),
+    		"problem_005" => run_problem(problems::problem_005::problem_005, arg),
+            "problem_006" => run_problem(problems::problem_006::problem_006, arg),
+            "problem_007" => run_problem(problems::problem_007::problem_007, arg),
+            "problem_008" => run_problem(problems::problem_008::problem_008, arg),
             "problem_009" => run_problem(problems::problem_009::problem_009, arg),
+            "problem_010" => run_problem(problems::problem_010::problem_010, arg),
     		_ => println!("Haven't done {} yet",arg)
 
     	}
