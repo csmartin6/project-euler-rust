@@ -3,7 +3,7 @@
 use std::hash::Hash;
 use std::collections::HashMap;
 
-pub fn is_prime(n: usize) -> bool {
+pub fn is_prime(n: u64) -> bool {
     if n == 2 {
         return true;
     }
@@ -12,8 +12,8 @@ pub fn is_prime(n: usize) -> bool {
         return false;
     }
 
-    let mut i: usize = 3;
-    while i <= (n as f64).sqrt() as usize {
+    let mut i: u64 = 3;
+    while i <= (n as f64).sqrt() as u64 {
         if n % i == 0 {
             return false;
         }
@@ -56,13 +56,13 @@ pub fn nth_prime(n: usize) -> usize {
 
 
 
-pub fn smallest_prime_factor(n: usize) -> usize {
+pub fn smallest_prime_factor(n: u64) -> u64 {
     if n % 2 == 0 {
         return 2;
     }
 
-    let mut i: usize = 3;
-    while i <= ((n as f64).sqrt() as usize) {
+    let mut i: u64 = 3;
+    while i <= ((n as f64).sqrt() as u64) {
         if n % i == 0 {
             return i;
         }
@@ -71,19 +71,25 @@ pub fn smallest_prime_factor(n: usize) -> usize {
     n
 }
 
-pub fn prime_factors(n: usize) -> Vec<usize> {
+pub fn prime_factors(n: u64) -> Vec<u64> {
     if n == 1 {
         return vec![1];
     }
     let mut factors = vec![];
 
-    let mut m: usize = n;
+    let mut m: u64 = n;
     while m > 1 {
         let next_factor = smallest_prime_factor(m);
         factors.push(next_factor);
         m /= next_factor;
     }
     factors
+}
+
+pub fn count_divisors(n: u64) -> u64 {
+    let factor_counts = counts(&prime_factors(n));
+
+    factor_counts.values().fold(1,|a,&b| a * (b as u64+1))
 }
 
 pub fn to_digit_array(num: usize) -> Vec<usize> {

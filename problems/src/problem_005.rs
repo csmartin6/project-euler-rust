@@ -1,10 +1,10 @@
 use utils;
 use std::collections::HashMap;
 
-pub fn problem_005() -> usize {
+pub fn problem_005() -> u64 {
     let n = 21;
 
-    let mut cumulative_prime_factors: HashMap<usize, usize> = HashMap::new();
+    let mut cumulative_prime_factors: HashMap<u64, usize> = HashMap::new();
 
     for i in 1..n {
         let factors = utils::prime_factors(i);
@@ -33,7 +33,7 @@ mod test {
 
     #[test]
     fn test_problem_005() {
-        let ans: usize = problem_005();
+        let ans: u64 = problem_005();
         println!("Answer to Problem 5: {}", ans);
         assert!(ans == 232792560)
     }
