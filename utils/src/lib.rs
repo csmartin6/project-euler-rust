@@ -243,6 +243,11 @@ mod tests {
         let array_a = vec![4, 5, 1];
         let array_b = vec![1, 6, 1, 3];
         assert_eq!(add_digit_array(&array_a[..], &array_b[..]), [2, 0, 6, 4]);
+
+
+        let array_a = vec![4, 5, 1];
+        let array_b = vec![3,1, 6, 1, 3];
+        assert_eq!(add_digit_array(&array_a[..], &array_b[..]), [3, 2, 0, 6, 4]);
     }
 
 }
