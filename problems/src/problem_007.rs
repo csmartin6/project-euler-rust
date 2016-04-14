@@ -13,15 +13,15 @@ mod test {
     use super::*;
     use test::Bencher;
 
-	#[test]
-	fn test_problem_007() {
-	    let ans: usize = problem_007();
-	    println!("Answer to Problem 7: {}", ans);
-	    assert!(ans == 104743)
-	}
+    #[test]
+    fn test_problem_007() {
+        let ans: usize = problem_007();
+        println!("Answer to Problem 7: {}", ans);
+        assert!(ans == 104743)
+    }
 
-	#[bench]
-	fn bench_problem_007(b: &mut Bencher) {
-	    b.iter(|| problem_007());
-	}	
+    #[bench]
+    fn bench_problem_007(b: &mut Bencher) {
+        b.iter(|| problem_007());
+    }
 }

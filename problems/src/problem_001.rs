@@ -12,17 +12,17 @@ pub fn problem_001() -> usize {
 mod test {
     use super::*;
     use test::Bencher;
-	
-	#[test]
-	fn test_problem_001() {
-	    let ans: usize = problem_001();
-	    println!("Answer to Problem 1: {}", ans);
-	    assert!(ans == 233168)
-	}
 
-	#[bench]
-	fn bench_problem_001(b: &mut Bencher) {
-	    b.iter(|| problem_001());
-	}
+    #[test]
+    fn test_problem_001() {
+        let ans: usize = problem_001();
+        println!("Answer to Problem 1: {}", ans);
+        assert!(ans == 233168)
+    }
+
+    #[bench]
+    fn bench_problem_001(b: &mut Bencher) {
+        b.iter(|| problem_001());
+    }
 
 }

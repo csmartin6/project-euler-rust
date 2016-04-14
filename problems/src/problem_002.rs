@@ -27,7 +27,7 @@ mod test {
     use super::*;
     use test::Bencher;
 
-    
+
     #[test]
     fn test_problem_002() {
         let ans: usize = problem_002();

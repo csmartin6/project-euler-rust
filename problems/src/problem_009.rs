@@ -17,7 +17,7 @@ pub fn problem_009() -> u64 {
 mod test {
     use super::*;
     use test::Bencher;
-    
+
     #[test]
     fn test_problem_009() {
         let ans: u64 = problem_009();
@@ -28,5 +28,5 @@ mod test {
     #[bench]
     fn bench_problem_009(b: &mut Bencher) {
         b.iter(|| problem_009());
-    }    
+    }
 }

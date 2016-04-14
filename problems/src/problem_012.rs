@@ -1,7 +1,7 @@
 use utils;
 
-pub fn problem_012() -> u64{
-	let n = 500;
+pub fn problem_012() -> u64 {
+    let n = 500;
     let mut num = 1;
     let mut i = 1;
     while utils::count_divisors(num) < n {
@@ -11,11 +11,12 @@ pub fn problem_012() -> u64{
     num
 }
 
+
 #[cfg(test)]
 mod test {
     use super::*;
     use test::Bencher;
-    
+
     #[test]
     fn test_problem_012() {
         let ans: u64 = problem_012();
@@ -26,5 +27,5 @@ mod test {
     #[bench]
     fn bench_problem_012(b: &mut Bencher) {
         b.iter(|| problem_012());
-    }    
+    }
 }

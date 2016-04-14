@@ -3,7 +3,7 @@ use utils;
 pub fn problem_010() -> u64 {
     let n = 2000000;
     let primes = utils::prime_sieve(n);
-    primes.iter().fold(0,|a, &b| a + b as u64)
+    primes.iter().fold(0, |a, &b| a + b as u64)
 }
 
 
@@ -11,7 +11,7 @@ pub fn problem_010() -> u64 {
 mod test {
     use super::*;
     use test::Bencher;
-    
+
     #[test]
     fn test_problem_010() {
         let ans: u64 = problem_010();
@@ -22,5 +22,5 @@ mod test {
     #[bench]
     fn bench_problem_010(b: &mut Bencher) {
         b.iter(|| problem_010());
-    }    
+    }
 }

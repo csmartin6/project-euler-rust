@@ -48,15 +48,15 @@ mod test {
     use super::*;
     use test::Bencher;
 
-	#[test]
-	fn test_problem_008() {
-	    let ans: u64 = problem_008();
-	    println!("Answer to Problem 8: {}", ans);
-	    assert!(ans == 23514624000)
-	}
+    #[test]
+    fn test_problem_008() {
+        let ans: u64 = problem_008();
+        println!("Answer to Problem 8: {}", ans);
+        assert!(ans == 23514624000)
+    }
 
-	#[bench]
-	fn bench_problem_008(b: &mut Bencher) {
-	    b.iter(|| problem_008());
-	}
+    #[bench]
+    fn bench_problem_008(b: &mut Bencher) {
+        b.iter(|| problem_008());
+    }
 }
