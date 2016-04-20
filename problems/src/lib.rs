@@ -1,5 +1,3 @@
-#![feature(step_by)]
-
 
 #![feature(test)]
 extern crate test;

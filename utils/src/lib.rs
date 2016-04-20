@@ -1,8 +1,13 @@
-#![feature(step_by)]
+extern crate nalgebra as na;
+extern crate num;
+
 
 use std::hash::Hash;
 use std::collections::HashMap;
 use std::cmp::max;
+
+pub mod linearalgebra;
+
 
 pub fn is_prime(n: u64) -> bool {
     if n == 2 {
@@ -32,8 +37,10 @@ pub fn prime_sieve(n: usize) -> Vec<usize> {
 
     while p <= (n as f64).sqrt() as usize {
         if candidate_primes[p] {
-            for i in ((p * p)..(n + 1)).step_by(p) {
-                candidate_primes[i] = false;
+            let mut i = p * p;
+            while i <= n {
+                 candidate_primes[i] = false;
+                 i += p;
             }
         }
         p += 1;
