@@ -4,10 +4,10 @@ pub fn problem_016() -> u32 {
     let n = 1000;
     let mut digits: Vec<u32> = vec![1];
     for _ in 0..n {
-    	digits = utils::add_digit_array(&digits[..], &digits[..])
+        digits = utils::add_digit_array(&digits[..], &digits[..])
     }
 
-    digits.iter().fold(0,|a,&b| a + b)
+    digits.iter().fold(0, |a, &b| a + b)
 }
 
 
@@ -28,5 +28,3 @@ mod test {
         b.iter(|| problem_016());
     }
 }
-
-
