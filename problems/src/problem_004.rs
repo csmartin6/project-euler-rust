@@ -1,8 +1,8 @@
 use utils;
 
-pub fn problem_004() -> usize {
+pub fn problem_004() -> u64 {
 
-    let mut max_palindrome: usize = 0;
+    let mut max_palindrome: u64 = 0;
     for (x, y) in iproduct!(900..1000, 900..1000) {
         if x * y > max_palindrome && utils::is_palindrome(x * y) {
             max_palindrome = x * y;
@@ -19,7 +19,7 @@ mod test {
 
     #[test]
     fn test_problem_004() {
-        let ans: usize = problem_004();
+        let ans: u64 = problem_004();
         println!("Answer to Problem 4: {}", ans);
         assert!(ans == 906609)
     }

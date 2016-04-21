@@ -101,17 +101,6 @@ pub fn count_divisors(n: u64) -> u64 {
     factor_counts.values().fold(1, |a, &b| a * (b as u64 + 1))
 }
 
-pub fn to_digit_array(num: usize) -> Vec<usize> {
-    let mut n: usize = num;
-    let mut digits: Vec<usize> = vec![];
-    while n > 1 {
-        digits.push((n % 10) as usize);
-        n /= 10;
-    }
-    digits.reverse();
-    digits
-}
-
 pub fn counts<T>(list: &[T]) -> HashMap<T, usize>
     where T: Eq + Hash + Copy
 {
@@ -124,7 +113,7 @@ pub fn counts<T>(list: &[T]) -> HashMap<T, usize>
     counter
 }
 
-pub fn is_palindrome(num: usize) -> bool {
+pub fn is_palindrome(num: u64) -> bool {
     let digits = to_digit_array(num);
     let n = digits.len();
     for i in 0..n / 2 {
@@ -133,6 +122,23 @@ pub fn is_palindrome(num: usize) -> bool {
         }
     }
     true
+}
+
+pub fn to_digit_array(num: u64) -> Vec<u32> {
+    let mut n: u64 = num;
+    let mut digits: Vec<u32> = vec![];
+    while n > 1 {
+        digits.push((n % 10) as u32);
+        n /= 10;
+    }
+    digits.reverse();
+    digits
+}
+
+pub fn from_digit_array(digits: Vec<u32>) -> u64 {
+    let base: u64 = 10;
+    digits.iter().rev().enumerate().map(|(pos,&d)| d as u64 * base.pow(pos as u32))
+                                    .fold(0, |a,b| a + b as u64)
 }
 
 pub fn add_digit_array(array_a: &[u32], array_b: &[u32]) -> Vec<u32> {
@@ -217,6 +223,12 @@ mod tests {
     fn test_to_digit_array() {
         assert_eq!(to_digit_array(325),vec![3,2,5]);
         assert_eq!(to_digit_array(505),vec![5,0,5]);
+    }
+
+        #[test]
+    fn test_from_digit_array() {
+        assert_eq!(from_digit_array(vec![3,2,5]),325);
+        assert_eq!(from_digit_array(vec![5,0,5]),505);
     }
 
     #[test]
