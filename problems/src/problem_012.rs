@@ -20,7 +20,7 @@ mod test {
     #[test]
     fn test_problem_012() {
         let ans: u64 = problem_012();
-        println!("Answer to Problem 10: {}", ans);
+        println!("Answer to Problem 12: {}", ans);
         assert!(ans == 76576500)
     }
 
