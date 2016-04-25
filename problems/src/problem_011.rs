@@ -21,7 +21,7 @@ fn read_grid_as_matrix() -> Result<DMatrix<u32>, Error> {
 
     }
 
-    Ok(DMatrix::from_col_vector(nrows, ncols, &grid[..]))
+    Ok(DMatrix::from_column_vector(nrows, ncols, &grid[..]))
 }
 
 fn max_product(arr: &[u32], length: usize) -> u32 {

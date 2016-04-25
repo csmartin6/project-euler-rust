@@ -7,7 +7,6 @@ extern crate itertools;
 extern crate problems;
 extern crate utils;
 
-
 use std::env;
 use std::process;
 use std::fmt::Display;
@@ -42,8 +41,14 @@ fn main(){
             "problem_008" => run_problem(problems::problem_008::problem_008, arg),
             "problem_009" => run_problem(problems::problem_009::problem_009, arg),
             "problem_010" => run_problem(problems::problem_010::problem_010, arg),
-            "problem_012" => run_problem(problems::problem_012::problem_012, arg),
+            "problem_011" => run_problem(problems::problem_011::problem_011, arg),            
+            "problem_012" => run_problem(problems::problem_012::problem_012, arg),            
+            "problem_013" => run_problem(problems::problem_013::problem_013, arg),            
+            "problem_014" => run_problem(problems::problem_014::problem_014, arg),            
+            "problem_015" => run_problem(problems::problem_015::problem_015, arg),            
             "problem_016" => run_problem(problems::problem_016::problem_016, arg),
+            "problem_017" => run_problem(problems::problem_017::problem_017, arg),            
+            "problem_018" => run_problem(problems::problem_018::problem_018, arg),            
     		_ => println!("Haven't done {} yet",arg)
 
     	}
