@@ -127,7 +127,7 @@ pub fn is_palindrome(num: u64) -> bool {
 pub fn to_digit_array(num: u64) -> Vec<u32> {
     let mut n: u64 = num;
     let mut digits: Vec<u32> = vec![];
-    while n > 1 {
+    while n >= 1 {
         digits.push((n % 10) as u32);
         n /= 10;
     }
@@ -177,6 +177,43 @@ pub fn add_digit_array(array_a: &[u32], array_b: &[u32]) -> Vec<u32> {
     }
 
     result.into_iter().rev().collect()
+}
+
+pub fn scalar_multiply_digit_array(array: &[u32], multiple: u32) -> Vec<u32> {
+    let base = 10;
+    let mut carry: u32 = 0;
+    let mut result: Vec<u32> = vec![];
+
+    for digit in array.iter().rev() {
+        let x = digit * multiple + carry;
+        result.push(x % base);
+        carry = x / base;
+    }
+
+    while carry >= 1 {
+        result.push(carry % base);
+        carry = carry / base;
+
+    }
+
+    result.into_iter().rev().collect()
+}
+
+pub fn multiply_digit_array(array_a: &[u32], array_b: &[u32]) -> Vec<u32> {
+
+    let mut result: Vec<u32> = vec![];
+
+    for (index, &digit) in array_b.iter().rev().enumerate() {
+        let mut to_add = scalar_multiply_digit_array(array_a, digit);
+        to_add.extend(vec![0;index]);
+        if index == 0 {
+            result = scalar_multiply_digit_array(array_a, digit);
+
+        } else {
+            result = add_digit_array(&result[..], &to_add[..]);
+        }
+    }
+    result
 }
 
 pub fn number_to_words(num: u32) -> String {
@@ -323,6 +360,48 @@ mod tests {
         let array_a = vec![4, 5, 1];
         let array_b = vec![3, 1, 6, 1, 3];
         assert_eq!(add_digit_array(&array_a[..], &array_b[..]), [3, 2, 0, 6, 4]);
+    }
+
+    #[test]
+    fn test_scalar_multiply_digit_array() {
+        let array = vec![5, 1];
+        let multiple = 3;
+        assert_eq!(scalar_multiply_digit_array(&array[..], multiple), [1, 5, 3]);
+
+        let array = vec![5, 9];
+        let multiple = 3;
+        assert_eq!(scalar_multiply_digit_array(&array[..], multiple), [1, 7, 7]);
+
+        let array = vec![5, 9];
+        let multiple = 13;
+        assert_eq!(scalar_multiply_digit_array(&array[..], multiple), [7, 6, 7]);
+    }
+
+    #[test]
+    fn test_multiply_digit_array() {
+        let array_a = vec![5, 1];
+        let array_b = vec![1, 3];
+        assert_eq!(multiply_digit_array(&array_a[..], &array_b[..]), [6, 6, 3]);
+
+        let array_a = vec![5, 9];
+        let array_b = vec![1, 3];
+        assert_eq!(multiply_digit_array(&array_a[..], &array_b[..]), [7, 6, 7]);
+
+        let array_a = vec![4, 5, 1];
+        let array_b = vec![6, 1, 3];
+        assert_eq!(multiply_digit_array(&array_a[..], &array_b[..]),
+                   [2, 7, 6, 4, 6, 3]);
+
+        let array_a = vec![4, 5, 1];
+        let array_b = vec![1, 6, 1, 3];
+        assert_eq!(multiply_digit_array(&array_a[..], &array_b[..]),
+                   [7, 2, 7, 4, 6, 3]);
+
+
+        let array_a = vec![4, 5, 1];
+        let array_b = vec![3, 1, 6, 1, 3];
+        assert_eq!(multiply_digit_array(&array_a[..], &array_b[..]),
+                   [1, 4, 2, 5, 7, 4, 6, 3]);
     }
 
     #[test]
