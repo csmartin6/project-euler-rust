@@ -95,11 +95,36 @@ pub fn prime_factors(n: u64) -> Vec<u64> {
     factors
 }
 
+pub fn find_divisors(n: u64)-> Vec<u64> {
+    let mut factors: Vec<u64> = vec![1];
+
+    for x in 2..((n as f64).sqrt() as u64 + 1){
+        if n % x == 0{
+            factors.push(x);
+        }
+    }
+    let mut complementary_factors: Vec<u64> = vec![];
+    for x in factors.iter().rev() {
+        complementary_factors.push(n/x);
+    }
+    factors.extend(complementary_factors);
+    factors
+}
+
+pub fn proper_divisors(n: u64)-> Vec<u64> {
+
+    let mut divisors: Vec<u64> = find_divisors(n);
+    divisors.pop();
+    divisors
+}
+
 pub fn count_divisors(n: u64) -> u64 {
     let factor_counts = counts(&prime_factors(n));
 
     factor_counts.values().fold(1, |a, &b| a * (b as u64 + 1))
 }
+
+
 
 pub fn counts<T>(list: &[T]) -> HashMap<T, usize>
     where T: Eq + Hash + Copy
@@ -306,10 +331,22 @@ mod tests {
         assert_eq!(prime_factors(18), vec![2, 3, 3]);
 
     }
+
     #[test]
     fn test_count_divisors() {
         assert!(count_divisors(28) == 6);
         assert!(count_divisors(7) == 2)
+    }
+    #[test]
+    fn test_find_divisors() {
+        assert_eq!(find_divisors(28),vec![1,2,4,7,14,28]);
+        assert_eq!(find_divisors(7),vec![1,7]);
+    }
+
+    #[test]
+    fn test_proper_divisors() {
+        assert_eq!(proper_divisors(28),vec![1,2,4,7,14]);
+        assert_eq!(proper_divisors(7),vec![1]);
     }
 
     #[test]
