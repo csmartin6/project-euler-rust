@@ -107,6 +107,10 @@ pub fn find_divisors(n: u64)-> Vec<u64> {
     for x in factors.iter().rev() {
         complementary_factors.push(n/x);
     }
+    // If n is a perfect square acoid adding the square root twice
+    if factors.last() == complementary_factors.first() {
+        factors.pop();
+    }
     factors.extend(complementary_factors);
     factors
 }
@@ -341,12 +345,14 @@ mod tests {
     fn test_find_divisors() {
         assert_eq!(find_divisors(28),vec![1,2,4,7,14,28]);
         assert_eq!(find_divisors(7),vec![1,7]);
+        assert_eq!(find_divisors(4),vec![1,2,4]);
     }
 
     #[test]
     fn test_proper_divisors() {
         assert_eq!(proper_divisors(28),vec![1,2,4,7,14]);
         assert_eq!(proper_divisors(7),vec![1]);
+        assert_eq!(proper_divisors(4),vec![1,2]);
     }
 
     #[test]
