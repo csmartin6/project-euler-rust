@@ -10,11 +10,11 @@ pub fn problem_021() -> u64 {
         let proper_divisor_sum = utils::proper_divisors(num).iter().fold(0,|a,&b| a + b);
         proper_divisor_sums.insert(num,proper_divisor_sum);
 
-        
+        // Check if the complement exists, if not compute it and store it.
         proper_divisor_sums.entry(proper_divisor_sum).or_insert(utils::proper_divisors(proper_divisor_sum).iter().fold(0,|a,&b| a + b));
 
+        
         let c_divisor_sum = *proper_divisor_sums.get(&proper_divisor_sum).unwrap(); 
-
         if (num == c_divisor_sum) && num != proper_divisor_sum {
             amicable_numbers.insert(num);
             amicable_numbers.insert(proper_divisor_sum);
