@@ -49,6 +49,13 @@ fn main(){
             "problem_016" => run_problem(problems::problem_016::problem_016, arg),
             "problem_017" => run_problem(problems::problem_017::problem_017, arg),            
             "problem_018" => run_problem(problems::problem_018::problem_018, arg),            
+            "problem_019" => run_problem(problems::problem_019::problem_019, arg), 
+            "problem_020" => run_problem(problems::problem_020::problem_020, arg),
+            "problem_021" => run_problem(problems::problem_021::problem_021, arg),            
+            "problem_022" => run_problem(problems::problem_022::problem_022, arg),            
+            "problem_023" => run_problem(problems::problem_023::problem_023, arg),            
+            "problem_024" => run_problem(problems::problem_024::problem_024, arg),            
+            "problem_025" => run_problem(problems::problem_025::problem_025, arg),           
     		_ => println!("Haven't done {} yet",arg)
 
     	}
