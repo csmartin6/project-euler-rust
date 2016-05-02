@@ -1,6 +1,5 @@
 use std::collections::HashSet;
 use utils;
-use itertools::Itertools;
 
 pub fn problem_023() -> u64 {
     let n: u64 = 28124;

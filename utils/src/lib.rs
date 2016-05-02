@@ -299,6 +299,14 @@ pub fn number_to_words(num: u32) -> String {
     }
 }
 
+pub fn factorial(n: u64) -> u64 {
+    if n == 0 || n == 1 {
+        1
+    } else {
+        n * factorial(n-1)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -455,4 +463,11 @@ mod tests {
                    "two thousand seven hundred and fifty");
         assert_eq!(number_to_words(1000), "one thousand");
     }
+    #[test]
+    fn test_factorial() {
+        assert_eq!(factorial(0),1);
+        assert_eq!(factorial(1),1);
+        assert_eq!(factorial(5),120);
+    }
+
 }
