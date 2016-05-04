@@ -6,7 +6,7 @@ pub fn problem_021() -> u64 {
     let mut proper_divisor_sums = HashMap::new();
     let mut amicable_numbers = HashSet::new();
 
-    for num in 0..n{
+    for num in 2..n{
         let proper_divisor_sum = utils::proper_divisors(num).iter().fold(0,|a,&b| a + b);
         proper_divisor_sums.insert(num,proper_divisor_sum);
 

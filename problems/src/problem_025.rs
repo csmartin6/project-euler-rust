@@ -9,7 +9,7 @@ pub fn problem_025() -> usize {
 	    fib.push(next);
         i += 1;
 	}
-    return i;
+    return i+1;
 }
 
 #[cfg(test)]

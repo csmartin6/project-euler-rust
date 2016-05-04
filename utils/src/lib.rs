@@ -164,8 +164,27 @@ pub fn to_digit_array(num: u64) -> Vec<u32> {
     digits
 }
 
+pub fn to_digit_array_base(num: u64, base: u64) -> Vec<u32> {
+    let mut n: u64 = num;
+    let mut digits: Vec<u32> = vec![];
+    while n >= 1 {
+        digits.push((n % base) as u32);
+        n /= base;
+    }
+    digits.reverse();
+    digits
+}
+
 pub fn from_digit_array(digits: Vec<u32>) -> u64 {
     let base: u64 = 10;
+    digits.iter()
+          .rev()
+          .enumerate()
+          .map(|(pos, &d)| d as u64 * base.pow(pos as u32))
+          .fold(0, |a, b| a + b as u64)
+}
+
+pub fn from_digit_array_base(digits: Vec<u32>, base: u64) -> u64 {
     digits.iter()
           .rev()
           .enumerate()
@@ -369,10 +388,22 @@ mod tests {
         assert_eq!(to_digit_array(505), vec![5, 0, 5]);
     }
 
+    fn test_to_digit_array_base() {
+        assert_eq!(to_digit_array_base(50,7), vec![1, 0,  1]);
+        assert_eq!(to_digit_array_base(505,7), vec![1,3, 2, 1]);
+    }
+
+
     #[test]
     fn test_from_digit_array() {
         assert_eq!(from_digit_array(vec![3, 2, 5]), 325);
         assert_eq!(from_digit_array(vec![5, 0, 5]), 505);
+    }
+
+        #[test]
+    fn test_from_digit_array_base() {
+        assert_eq!(from_digit_array_base(vec![1,0,1],7), 50);
+        assert_eq!(from_digit_array_base(vec![1, 3, 2,1],7), 505);
     }
 
     #[test]
