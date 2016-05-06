@@ -6,6 +6,7 @@ authors = ["Chris Martin <cmartin@palantir.com>"]
 [dependencies]
 itertools = "0.4.9"
 nalgebra = "0.8"
+num = "0.1"
 
 
 utils = {path = "../utils"}
