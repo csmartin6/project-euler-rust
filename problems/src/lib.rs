@@ -8,6 +8,7 @@ extern crate test;
 extern crate itertools;
 extern crate utils;
 extern crate nalgebra as na;
+extern crate num;
 
 pub mod problem_001;
 pub mod problem_002;
