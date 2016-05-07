@@ -1,5 +1,6 @@
 use num::Integer;
 
+#[inline(never)]
 pub fn multiplicative_order(a: u64, n: u64) -> u32 {
     if (a.gcd(&n) != 1) | (n <= 1){
         return 0;
@@ -14,7 +15,7 @@ pub fn multiplicative_order(a: u64, n: u64) -> u32 {
     k
 }
 
-
+#[inline(never)]
 pub fn problem_026() -> usize {
     let n: usize = 1000;
     let repetend_lengths: Vec<u32> = (0..n).map(|p| multiplicative_order(10, p as u64)).collect();

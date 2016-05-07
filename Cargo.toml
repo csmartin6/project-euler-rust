@@ -9,3 +9,5 @@ utils = {path = "utils"}
 
 itertools = "0.4.9"
 
+[profile.release]
+debug = true

@@ -1,8 +1,12 @@
+#![feature(alloc_system)]
 #![feature(test)]
+
+extern crate alloc_system;
 extern crate test;
 
 #[macro_use] 
 extern crate itertools;
+
 
 extern crate problems;
 extern crate utils;
@@ -22,14 +26,14 @@ fn run_problem<P,A: Display> (problem: P,name: &str) where P: Fn() -> A{
 fn main(){
 
 
-    let argv = env::args().collect::<Vec<_>>();
+    let mut argv = env::args().collect::<Vec<_>>();
 
     if argv.len() < 2 {
         println!("Usage: {} <problems>", argv[0]);
         process::exit(1);
     }
-
-    for arg in argv.iter(){
+    let problems = argv.split_off(1); 
+    for arg in problems.iter(){
     	match &arg[..] {
     		"problem_001" => run_problem(problems::problem_001::problem_001, arg),
     		"problem_002" => run_problem(problems::problem_002::problem_002, arg),
@@ -55,7 +59,10 @@ fn main(){
             "problem_022" => run_problem(problems::problem_022::problem_022, arg),            
             "problem_023" => run_problem(problems::problem_023::problem_023, arg),            
             "problem_024" => run_problem(problems::problem_024::problem_024, arg),            
-            "problem_025" => run_problem(problems::problem_025::problem_025, arg),           
+            "problem_025" => run_problem(problems::problem_025::problem_025, arg),
+            "problem_026" => run_problem(problems::problem_026::problem_026, arg),  
+            "problem_027" => run_problem(problems::problem_027::problem_027, arg),  
+            "problem_148" => run_problem(problems::problem_148::problem_148, arg),             
     		_ => println!("Haven't done {} yet",arg)
 
     	}
