@@ -1,4 +1,4 @@
-
+#![feature(step_by)]
 #![feature(test)]
 extern crate test;
 
@@ -37,4 +37,5 @@ pub mod problem_024;
 pub mod problem_025;
 pub mod problem_026;
 pub mod problem_027;
+pub mod problem_028;
 pub mod problem_148;
