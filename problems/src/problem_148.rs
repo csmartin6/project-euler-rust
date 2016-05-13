@@ -1,44 +1,31 @@
 use utils;
 use std::u64;
 
-pub fn next_row(row: &Vec<u32>) -> Vec<u32>{
-    let mut prev_elem = 0;
-    let mut next_row: Vec<u32> = vec![];
-    for &elem in row.iter(){
-        next_row.push((prev_elem + elem) % 7);
-        prev_elem = elem;
-    }
-    next_row.push(1);
-    next_row
-}
-
-
-pub fn problem_148() -> u64 {
-    let n: u64 = 1000000000;
-    pascal_triangle_mod_7(n)
-}
-
-
 pub fn pascal_triangle_mod_7(n: u64) -> u64 {
-    
-    let n_base_7 = utils::to_digit_array_base(n,7);
+
+    let n_base_7 = utils::to_digit_array_base(n, 7);
     let m = n_base_7.len() as u32;
     let mut count = 0;
-    
+
     let base_triangle: u64 = 28;
     let mut sources = 1;
-    for (i,&d) in n_base_7.iter().enumerate(){
+    for (i, &d) in n_base_7.iter().enumerate() {
 
         if d > 0 {
-            let num_i_triangles = sources * ((d*(d+1)/2) as u64);
-            let triangle_i = base_triangle.pow((m-(i as u32)-1) as u32);
+            let num_i_triangles = sources * ((d * (d + 1) / 2) as u64);
+            let triangle_i = base_triangle.pow((m - (i as u32) - 1) as u32);
             count += num_i_triangles * triangle_i;
-            sources = sources * (d+1) as u64;
+            sources = sources * (d + 1) as u64;
         };
 
 
     }
     count
+}
+
+pub fn problem_148() -> u64 {
+    let n: u64 = 1000000000;
+    pascal_triangle_mod_7(n)
 }
 
 #[cfg(test)]
@@ -53,15 +40,15 @@ mod test {
         assert!(ans == 2129970655314432)
     }
 
-        #[test]
+    #[test]
     fn test_problem_148_pascal_triangle_mod_7() {
-        assert_eq!(pascal_triangle_mod_7(7),28);
-        assert_eq!(pascal_triangle_mod_7(8),30);
-        assert_eq!(pascal_triangle_mod_7(9),34);
-        assert_eq!(pascal_triangle_mod_7(100),2361);
-        assert_eq!(pascal_triangle_mod_7(1000),118335);
-        assert_eq!(pascal_triangle_mod_7(7500),3753960);
-        assert_eq!(pascal_triangle_mod_7(1000000000),2129970655314432);
+        assert_eq!(pascal_triangle_mod_7(7), 28);
+        assert_eq!(pascal_triangle_mod_7(8), 30);
+        assert_eq!(pascal_triangle_mod_7(9), 34);
+        assert_eq!(pascal_triangle_mod_7(100), 2361);
+        assert_eq!(pascal_triangle_mod_7(1000), 118335);
+        assert_eq!(pascal_triangle_mod_7(7500), 3753960);
+        assert_eq!(pascal_triangle_mod_7(1000000000), 2129970655314432);
     }
 
 
@@ -69,5 +56,5 @@ mod test {
     fn bench_problem_148(b: &mut Bencher) {
         b.iter(|| problem_148());
     }
-    
+
 }
