@@ -13,43 +13,41 @@ pub fn problem_032() -> u32 {
     let zero: u32 = 0;
 
     for a in 12..99{
-        for b in 123..988{
+        for b in 123..(10000/a){
             let m = a * b;
-            if m < 10000 {
-                let mut digits : HashSet<u32> = HashSet::new();
-                for &d in utils::to_digit_array(a).iter() {
-                    digits.insert(d);
-                }
-                for &d in utils::to_digit_array(b).iter() {
-                    digits.insert(d);
-                }
-                for &d in utils::to_digit_array(m).iter() {
-                    digits.insert(d);
-                }
-                if !(digits.contains(&zero)) & (digits.len() == 9){
-                    pandigital.insert(m as u32);
-                }
+            let mut digits : HashSet<u32> = HashSet::new();
+            for &d in utils::to_digit_array(a).iter() {
+                digits.insert(d);
+            }
+            for &d in utils::to_digit_array(b).iter() {
+                digits.insert(d);
+            }
+            for &d in utils::to_digit_array(m).iter() {
+                digits.insert(d);
+            }
+            if !(digits.contains(&zero)) & (digits.len() == 9){
+                pandigital.insert(m as u32);
             }
         }
     }
+
+    // 1 * 4
     for a in 2..10 {
-        for b in 1234..5000 {
+        for b in 1234..(10000/a) {
             let m = a * b;
-            if m < 10000 {
-                let mut digits : HashSet<u32> = HashSet::new();
-                
-                for &d in utils::to_digit_array(a).iter() {
-                    digits.insert(d);
-                }
-                for &d in utils::to_digit_array(b).iter() {
-                    digits.insert(d);
-                }
-                for &d in utils::to_digit_array(m).iter() {
-                    digits.insert(d);
-                }
-                if !(digits.contains(&zero)) & (digits.len() == 9){
-                    pandigital.insert(m as u32);
-                }
+            let mut digits : HashSet<u32> = HashSet::new();
+            
+            for &d in utils::to_digit_array(a).iter() {
+                digits.insert(d);
+            }
+            for &d in utils::to_digit_array(b).iter() {
+                digits.insert(d);
+            }
+            for &d in utils::to_digit_array(m).iter() {
+                digits.insert(d);
+            }
+            if !(digits.contains(&zero)) & (digits.len() == 9){
+                pandigital.insert(m as u32);
             }
             
         }
