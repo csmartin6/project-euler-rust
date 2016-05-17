@@ -16,13 +16,13 @@ pub fn problem_032() -> u32 {
         for b in 123..(10000/a){
             let m = a * b;
             let mut digits : HashSet<u32> = HashSet::new();
-            for &d in utils::to_digit_array(a).iter() {
+            for &d in utils::as_digit_array(a).iter() {
                 digits.insert(d);
             }
-            for &d in utils::to_digit_array(b).iter() {
+            for &d in utils::as_digit_array(b).iter() {
                 digits.insert(d);
             }
-            for &d in utils::to_digit_array(m).iter() {
+            for &d in utils::as_digit_array(m).iter() {
                 digits.insert(d);
             }
             if !(digits.contains(&zero)) & (digits.len() == 9){
@@ -37,13 +37,13 @@ pub fn problem_032() -> u32 {
             let m = a * b;
             let mut digits : HashSet<u32> = HashSet::new();
             
-            for &d in utils::to_digit_array(a).iter() {
+            for &d in utils::as_digit_array(a).iter() {
                 digits.insert(d);
             }
-            for &d in utils::to_digit_array(b).iter() {
+            for &d in utils::as_digit_array(b).iter() {
                 digits.insert(d);
             }
-            for &d in utils::to_digit_array(m).iter() {
+            for &d in utils::as_digit_array(m).iter() {
                 digits.insert(d);
             }
             if !(digits.contains(&zero)) & (digits.len() == 9){

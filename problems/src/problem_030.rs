@@ -4,7 +4,7 @@ pub fn problem_030() -> usize {
 
     let mut numbers: Vec<u32> = vec![];
     for num in 2..250000 {
-        let digits = utils::to_digit_array(num);
+        let digits = utils::as_digit_array(num);
         let sum_of_fifth_powers = digits.iter().fold(0,|a,&b| a + b.pow(5));
 
         if sum_of_fifth_powers == num as u32{

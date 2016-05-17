@@ -143,7 +143,7 @@ pub fn counts<T>(list: &[T]) -> HashMap<T, usize>
 }
 
 pub fn is_palindrome(num: u64) -> bool {
-    let digits = to_digit_array(num);
+    let digits = as_digit_array(num);
     let n = digits.len();
     for i in 0..n / 2 {
         if digits[i] != digits[n - i - 1] {
@@ -153,7 +153,7 @@ pub fn is_palindrome(num: u64) -> bool {
     true
 }
 
-pub fn to_digit_array(num: u64) -> Vec<u32> {
+pub fn as_digit_array(num: u64) -> Vec<u32> {
     let mut n: u64 = num;
     let mut digits: Vec<u32> = vec![];
     while n >= 1 {
@@ -164,7 +164,7 @@ pub fn to_digit_array(num: u64) -> Vec<u32> {
     digits
 }
 
-pub fn to_digit_array_base(num: u64, base: u64) -> Vec<u32> {
+pub fn as_digit_array_base(num: u64, base: u64) -> Vec<u32> {
     let mut n: u64 = num;
     let mut digits: Vec<u32> = vec![];
     while n >= 1 {
@@ -383,14 +383,14 @@ mod tests {
     }
 
     #[test]
-    fn test_to_digit_array() {
-        assert_eq!(to_digit_array(325), vec![3, 2, 5]);
-        assert_eq!(to_digit_array(505), vec![5, 0, 5]);
+    fn test_as_digit_array() {
+        assert_eq!(as_digit_array(325), vec![3, 2, 5]);
+        assert_eq!(as_digit_array(505), vec![5, 0, 5]);
     }
 
-    fn test_to_digit_array_base() {
-        assert_eq!(to_digit_array_base(50,7), vec![1, 0,  1]);
-        assert_eq!(to_digit_array_base(505,7), vec![1,3, 2, 1]);
+    fn test_as_digit_array_base() {
+        assert_eq!(as_digit_array_base(50,7), vec![1, 0,  1]);
+        assert_eq!(as_digit_array_base(505,7), vec![1,3, 2, 1]);
     }
 
 

@@ -3,7 +3,7 @@ use std::u64;
 
 pub fn pascal_triangle_mod_7(n: u64) -> u64 {
 
-    let n_base_7 = utils::to_digit_array_base(n, 7);
+    let n_base_7 = utils::as_digit_array_base(n, 7);
     let m = n_base_7.len() as u32;
     let mut count = 0;
 

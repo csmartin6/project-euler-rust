@@ -8,8 +8,8 @@ pub fn problem_033() -> u32 {
         for j in (i+1)..100 {
             let gcd = i.gcd(&j);
             let value = (i/gcd as u32, j/gcd as u32);
-            let numerator = utils::to_digit_array(i as u64);
-            let denominator = utils::to_digit_array(j as u64);
+            let numerator = utils::as_digit_array(i as u64);
+            let denominator = utils::as_digit_array(j as u64);
             for (i,&d) in numerator.iter().enumerate(){
                 if (d != 0) & denominator.contains(&d) {
                     let mut new_numerator = numerator.clone();
