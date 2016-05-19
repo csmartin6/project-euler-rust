@@ -70,7 +70,8 @@ fn main(){
             "problem_033" => run_problem(problems::problem_033::problem_033, arg),  
             "problem_034" => run_problem(problems::problem_034::problem_034, arg),  
             "problem_035" => run_problem(problems::problem_035::problem_035, arg),  
-            "problem_036" => run_problem(problems::problem_036::problem_036, arg),  
+            "problem_036" => run_problem(problems::problem_036::problem_036, arg),
+            "problem_037" => run_problem(problems::problem_037::problem_037, arg),  
             "problem_148" => run_problem(problems::problem_148::problem_148, arg),             
     		_ => println!("Haven't done {} yet",arg)
 
