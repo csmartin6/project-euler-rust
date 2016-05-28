@@ -9,6 +9,7 @@ extern crate itertools;
 extern crate utils;
 extern crate nalgebra as na;
 extern crate num;
+extern crate sequence_trie;
 
 pub mod problem_001;
 pub mod problem_002;
@@ -52,5 +53,6 @@ pub mod problem_039;
 pub mod problem_040;
 pub mod problem_041;
 pub mod problem_042;
+pub mod problem_043;
 pub mod problem_148;
 
