@@ -78,6 +78,8 @@ fn main(){
             "problem_041" => run_problem(problems::problem_041::problem_041, arg),   
             "problem_042" => run_problem(problems::problem_042::problem_042, arg),
             "problem_043" => run_problem(problems::problem_043::problem_043, arg),   
+            "problem_04$" => run_problem(problems::problem_044::problem_044, arg),   
+            "problem_045" => run_problem(problems::problem_045::problem_045, arg),   
             "problem_148" => run_problem(problems::problem_148::problem_148, arg),             
     		_ => println!("Haven't done {} yet",arg)
 
