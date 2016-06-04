@@ -264,6 +264,46 @@ pub fn multiply_digit_array(array_a: &[u32], array_b: &[u32]) -> Vec<u32> {
     result
 }
 
+pub fn power_digit_array(arr: &[u32], exponent: u32) -> Vec<u32>{ 
+
+    let mut power = vec![1];
+    let mut base = arr.to_vec();
+    let binary_exponent= format!("{:b}",exponent);
+    for b in binary_exponent.chars().rev() {
+        if b == '1'{
+            power = multiply_digit_array(&power, &base);
+        }
+        base = multiply_digit_array(&base, &base);
+    }
+    power
+}
+
+
+pub fn power_digit_array_truncated(arr: &[u32], exponent: u32, num_digits: usize) -> Vec<u32>{ 
+
+    let mut power = vec![1];
+    let mut base = arr.to_vec();
+    let binary_exponent= format!("{:b}",exponent);
+    for b in binary_exponent.chars().rev() {
+        if b == '1'{
+            power = multiply_digit_array(&power, &base);
+            
+            let n = power.len();
+            if n > num_digits {
+        ;
+            }
+
+        }
+        base = multiply_digit_array(&base, &base);
+        let n = base.len();
+        if n > num_digits {
+            base = base.split_off(n-num_digits);
+        }
+    }
+    power
+}
+
+
 pub fn number_to_words(num: u32) -> String {
     match num {
         1000...999999 => {
@@ -484,6 +524,28 @@ mod tests {
         let array_b = vec![3, 1, 6, 1, 3];
         assert_eq!(multiply_digit_array(&array_a[..], &array_b[..]),
                    [1, 4, 2, 5, 7, 4, 6, 3]);
+    }
+
+    #[test]
+    fn test_power_digit_array() {
+        let array= vec![3, 9];
+        assert_eq!(power_digit_array(&array[..], 2), [1, 5, 2, 1]);
+        let array= vec![2];
+        assert_eq!(power_digit_array(&array[..], 8), [2, 5, 6]);
+        let array= vec![1,7];
+        assert_eq!(power_digit_array(&array[..], 9), [1,1,8,5,8,7,8,7,6,4,9,7]);
+
+    }
+
+    #[test]
+    fn test_power_digit_array_truncated() {
+        let array= vec![3, 9];
+        assert_eq!(power_digit_array_truncated(&array[..], 2,3), [5, 2, 1]);
+        let array= vec![2];
+        assert_eq!(power_digit_array_truncated(&array[..], 8,1), [6]);
+        let array= vec![1,7];
+        assert_eq!(power_digit_array_truncated(&array[..], 9,5), [7,6,4,9,7]);
+
     }
 
     #[test]
